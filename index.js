@@ -79,11 +79,13 @@ ExpressOAuthServer.prototype.authorize = function() {
       })
       .then(function() {
         return handleResponse(req, res, response);
+        next();
       })
       .catch(function(e) {
-        return handleError(e, req, res, response);
-      })
-      .finally(next);
+        next(e);
+        //return handleError(e, req, res, response);
+      });
+      //.finally(next);
   };
 };
 
@@ -111,11 +113,13 @@ ExpressOAuthServer.prototype.token = function() {
       })
       .then(function() {
         return handleResponse(req, res, response);
+        next();
       })
       .catch(function(e) {
-        return handleError(e, req, res, response);
-      })
-      .finally(next);
+        next(e);
+        //return handleError(e, req, res, response);
+      });
+      //.finally(next);
   };
 };
 
